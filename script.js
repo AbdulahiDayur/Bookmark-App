@@ -15,8 +15,23 @@ function showModal() {
 // Modal Event Listeners
 modalShow.addEventListener('click', showModal);
 modalClose.addEventListener("click", () => modalContainer.classList.remove('show-modal'));
-
 window.addEventListener('click', (e) => {
   e.target == modalContainer ? modalContainer.classList.remove('show-modal') : false
 });
+
+
+
+// Handle Data from form
+function storeBookmark(e) {
+  e.preventDefault();
+  const nameValue = websiteNameEl.value;
+  let urlValue = websiteUrlEl.value;
+  if (!urlValue.includes('https://') && !urlValue.includes('http://')) {
+    urlValue = `https://${urlValue}`;
+  }
+  console.log(nameValue, urlValue);
+}
+
+// Event Listerner
+bookmarkForm.addEventListener('submit', storeBookmark);
 
